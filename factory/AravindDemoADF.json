@@ -1,0 +1,15 @@
+{
+	"name": "AravindDemoADF",
+	"properties": {
+		"trustModeClaimForMi": {
+			"value": "Disabled",
+			"editable": true
+		}
+	},
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "c375fd6e-372c-4bfe-8889-a5c0c8ee8062",
+		"tenantId": "fdb92acf-8fc8-41a5-b21d-b645f5d5f857"
+	}
+}
