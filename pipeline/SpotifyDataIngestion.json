@@ -5,11 +5,15 @@
 			{
 				"name": "AzureSQLDB to Lake",
 				"type": "Copy",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "Last_CDC",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "CurrentStamp",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -33,12 +37,43 @@
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
-					"enableStaging": false
+					"sink": {
+						"type": "ParquetSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						},
+						"formatSettings": {
+							"type": "ParquetWriteSettings"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
 				},
 				"inputs": [
 					{
 						"referenceName": "AzureSqlTable1",
 						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "Dynamicparquet",
+						"type": "DatasetReference",
+						"parameters": {
+							"container": "bronzecontainer",
+							"folder": "users",
+							"file": {
+								"value": "@concat(pipeline().parameters.Table,'_',variables('CurrentTimeStamp'))",
+								"type": "Expression"
+							}
+						}
 					}
 				]
 			},
@@ -77,17 +112,43 @@
 					},
 					"firstRowOnly": false
 				}
+			},
+			{
+				"name": "CurrentStamp",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [
+					{
+						"name": "CurrentTime"
+					}
+				],
+				"typeProperties": {
+					"variableName": "CurrentTimeStamp",
+					"value": {
+						"value": "@utcNow()",
+						"type": "Expression"
+					}
+				}
 			}
 		],
 		"parameters": {
-			"Table": {
+			"table": {
 				"type": "string"
 			},
-			"Schema": {
+			"schema": {
 				"type": "string"
 			},
-			"CDC_Col": {
+			"cdc_col": {
 				"type": "string"
+			}
+		},
+		"variables": {
+			"CurrentTimeStamp": {
+				"type": "String"
 			}
 		},
 		"annotations": []
