@@ -476,8 +476,6 @@
 					{
 						"name": "AzureSQLDB to Lake",
 						"type": "Copy",
-						"state": "Inactive",
-						"onInactiveMarkAs": "Succeeded",
 						"dependsOn": [
 							{
 								"activity": "Last_CDC",
@@ -590,8 +588,6 @@
 					{
 						"name": "CurrentStamp",
 						"type": "SetVariable",
-						"state": "Inactive",
-						"onInactiveMarkAs": "Succeeded",
 						"dependsOn": [],
 						"policy": {
 							"secureOutput": false,
