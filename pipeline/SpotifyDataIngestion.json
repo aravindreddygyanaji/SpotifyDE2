@@ -32,7 +32,7 @@
 				]
 			},
 			{
-				"name": "Lookup1",
+				"name": "Last_CDC",
 				"type": "Lookup",
 				"dependsOn": [],
 				"policy": {
@@ -56,14 +56,15 @@
 						}
 					},
 					"dataset": {
-						"referenceName": "JsonFiles",
+						"referenceName": "Spotify",
 						"type": "DatasetReference",
 						"parameters": {
 							"container": "bronzecontainer",
 							"folder": "CDC",
 							"file": "cdc.json"
 						}
-					}
+					},
+					"firstRowOnly": false
 				}
 			}
 		],
