@@ -5,20 +5,32 @@
 		"factoryName": {
 			"value": "AravindDemoADF"
 		},
+		"AzureSqlDatabase_password": {
+			"value": ""
+		},
 		"AzureSqlDatabase1_password": {
 			"value": ""
 		},
 		"LS_ADLS_accountKey": {
 			"value": ""
 		},
-		"AzureSqlDatabase1_properties_typeProperties_server": {
+		"AzureSqlDatabase_properties_typeProperties_server": {
 			"value": "azuredatamysqlserver.database.windows.net"
 		},
-		"AzureSqlDatabase1_properties_typeProperties_database": {
+		"AzureSqlDatabase_properties_typeProperties_database": {
 			"value": "AzureMySQLDB"
 		},
-		"AzureSqlDatabase1_properties_typeProperties_userName": {
+		"AzureSqlDatabase_properties_typeProperties_userName": {
 			"value": "sqladmin"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_server": {
+			"value": "carsdata.database.windows.net"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_database": {
+			"value": "carsdatabase"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_userName": {
+			"value": "sqladmin1"
 		},
 		"HttpServer1_properties_typeProperties_url": {
 			"value": "https://raw.githubusercontent.com"
