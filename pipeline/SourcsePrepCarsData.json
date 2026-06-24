@@ -52,7 +52,10 @@
 				"outputs": [
 					{
 						"referenceName": "CarsSqlSink",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"table": "source_cars_table"
+						}
 					}
 				]
 			}
