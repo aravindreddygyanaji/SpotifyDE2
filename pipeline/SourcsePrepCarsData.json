@@ -54,7 +54,7 @@
 						"referenceName": "CarsSqlSink",
 						"type": "DatasetReference",
 						"parameters": {
-							"table": "source_cars_table"
+							"table": "source_cars_data"
 						}
 					}
 				]
